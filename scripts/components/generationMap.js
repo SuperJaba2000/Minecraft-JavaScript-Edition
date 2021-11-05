@@ -27,7 +27,7 @@ class Map {
 		
 		for(let x = 0; x < settings.chunkSize; x++) {
 			for(let z = 0; z < settings.chunkSize; z++) {
-			    for(let y = 0; y < 256; z++) {
+			    for(let y = 0; y < 100; z++) {
 
 				let cube = new Mesh(geometry, materialArray);
 				
@@ -40,7 +40,7 @@ class Map {
 
 				if(value >= 0.3){
 			            cube.position.set(x * settings.blockSquare, y * settings.blockSquare, z * settings.blockSquare);
-				    scene.add( cube );
+				    scene.add(cube);
 				}
 			    }
 			}
