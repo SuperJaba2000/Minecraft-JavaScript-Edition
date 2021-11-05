@@ -4,6 +4,7 @@ class Map {
 		
 		this.xoff = 0;
 		this.zoff = 0;
+	        this.yoff = 0;
 		this.inc = 0.05;
 		this.amplitude = 30 + (Math.random() * 70);
     }
@@ -33,10 +34,14 @@ class Map {
 
 				this.xoff = this.inc * x;
 				this.zoff = this.inc * z;
-				let y = Math.round(noise.simplex3(this.xoff, this.zoff, y) * this.amplitude / 5);
+				this.yoff = this.inc * y;
+				    
+				let value = Math.round(noise.simplex3(this.xoff, this.yoff, this.zoff) * this.amplitude / 5);
 
-				cube.position.set(x * settings.blockSquare, y * settings.blockSquare, z * settings.blockSquare);
-				scene.add( cube );
+				if(value >= 0.3){
+			            cube.position.set(x * settings.blockSquare, y * settings.blockSquare, z * settings.blockSquare);
+				    scene.add( cube );
+				}
 			    }
 			}
 		}
