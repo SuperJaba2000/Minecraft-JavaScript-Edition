@@ -6,7 +6,6 @@ class Map {
 		this.zoff = 0;
 	        this.yoff = 0;
 		this.inc = 0.05;
-		this.amplitude = 30 + (Math.random() * 70);
     }
     generation(scene) {
 		const settings = new Settings();
@@ -27,7 +26,7 @@ class Map {
 		
 		for(let x = 0; x < settings.chunkSize; x++) {
 			for(let z = 0; z < settings.chunkSize; z++) {
-			    for(let y = 0; y < 100; y++) {
+			    for(let y = 0; y < 28; y++) {
 
 				let cube = new Mesh(geometry, materialArray);
 				
@@ -36,9 +35,9 @@ class Map {
 				this.zoff = this.inc * z;
 				this.yoff = this.inc * y;
 				    
-				let value = Math.round(noise.simplex3(this.xoff, this.yoff, this.zoff) * this.amplitude / 5);
+				let value = noise.simplex3(this.xoff, this.yoff, this.zoff);
 
-				if(value >= 0.3){
+				if(value >= 0.5){
 			            cube.position.set(x * settings.blockSquare, y * settings.blockSquare, z * settings.blockSquare);
 				    scene.add(cube);
 				}
