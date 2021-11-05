@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!--meta name="viewport", content="width=device-width, initial-scale=1.0" -->
+        <link rel="stylesheet" href="style/style.css">
+        <title>Minecraft</title>
+    </head>
+    <body>
+        <canvas id="game">
+        <div id="cursor">
+
+        <script src="./scripts/perlin.js"></script>
+		<script src="./scripts/components/three.module.js"></script>
+		<script src="./scripts/components/PointerLockControls.js"></script>
+		<script src="./scripts/components/settings.js"></script>
+		<script src="./scripts/components/generationMap.js"></script>
+		<script src="./scripts/components/controls.js"></script>
+        <script>
+		        // стандартные настройки three.js
+                        const canvas				= document.getElementById("game");
+                        const scene 				= new Scene();
+                        scene.background 			= new Color(0x00ffff);
+                        scene.fog 					= new Fog(0x00ffff, 10, 650);
+                        const renderer 				= new WebGLRenderer({canvas});
+                        renderer.setSize(window.innerWidth, window.innerHeight);
+                        const camera 				= new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                        camera.position.set(50, 40, 50);
+
+
+                        // Создание карты
+                        let mapWorld = new Map();
+                        mapWorld.generation(scene);
+
+                        let controls = new Controls( new PointerLockControls(camera, document.body),  scene, mapWorld );
+
+                        window.addEventListener( "keydown", (e)=>{ controls.inputKeydown(e); } );
+                        window.addEventListener( "keyup", (e)=>{ controls.inputKeyup(e); } );
+                        document.body.addEventListener( "click", (e) => { controls.onClick(e); }, false );
+
+                        // Инвентарь
+                        //const inventory = new Inventory(canvas, 5);
+
+                        function update(){
+                        	// передвижение/камера
+                        	controls.update();
+                        };
+
+                        //GameLoop();
+
+                        // Игровой цикл
+                        function GameLoop() {
+                        	update();
+                        	render();
+                        	requestAnimationFrame(GameLoop);
+                        }
+
+                        // Рендер сцены(1 кадра)
+                        function render(){
+                        	renderer.render(scene, camera);
+                        }
+
+                        // обновление размера игры
+                        window.addEventListener("resize", function() {
+                        	camera.aspect = window.innerWidth / window.innerHeight;
+                        	camera.updateProjectionMatrix();
+                        	renderer.setSize(window.innerWidth, window.innerHeight);
+                        });
+		</script>
+	</body>
+</html>
