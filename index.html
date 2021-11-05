@@ -57,7 +57,8 @@
                         function GameLoop() {
                         	update();
                         	render();
-                        	requestAnimationFrame(GameLoop);
+                        	//requestAnimationFrame(GameLoop);
+				GameLoop();
                         }
 
                         // Рендер сцены(1 кадра)
