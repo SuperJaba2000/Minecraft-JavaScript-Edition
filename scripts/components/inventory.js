@@ -1,4 +1,4 @@
-export class Inventory {
+class Inventory {
 	constructor(canvas, count) {
 		this.count = count;
 		this.items = [];
@@ -40,7 +40,7 @@ export class Inventory {
 			inventory.append( item );
 		}
 		this.items[ this.indexActive ].classList.add("select");
-		document.querySelector("body").append( inventory );
+		document.body.append( inventory );
 	}  
 	onWheel(e, that) {
 		e = e || window.event;
