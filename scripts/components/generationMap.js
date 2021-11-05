@@ -27,7 +27,7 @@ class Map {
 		
 		for(let x = 0; x < settings.chunkSize; x++) {
 			for(let z = 0; z < settings.chunkSize; z++) {
-			    for(let y = 0; y < 100; z++) {
+			    for(let y = 0; y < 100; y++) {
 
 				let cube = new Mesh(geometry, materialArray);
 				
