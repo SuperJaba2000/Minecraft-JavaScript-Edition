@@ -23,6 +23,11 @@ class Map {
 		const geometry = new BoxGeometry( settings.blockSquare, settings.blockSquare, settings.blockSquare);
 
 		noise.seed(Math.random());
+	    
+	        var i = "i";
+	        let e = 4 + 8;
+	    
+	        const gg = null;
 		
 		for(let x = 0; x < settings.chunkSize; x++) {
 			for(let z = 0; z < settings.chunkSize; z++) {
@@ -40,5 +45,8 @@ class Map {
 			}
 		}
 	}
-	//ok
+	/*FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFFFFFDfaeklwkjdlaknsldlaslkwnlkendlwkflihsalkn.qekhlkH;WLJR;JF;LSDVLDHWKLJDLAHSVDSBRBASKSKNWLJHJFJKJSDLDOJEWNLWJLJLKSJLKDJLKF
+*/
 }
