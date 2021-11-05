@@ -10,14 +10,15 @@
         <canvas id="game">
         <div id="cursor">
 		
-	<img src="../texture/dirt-side.jpg">
-	<img src="../texture/dirt-top.jpg">
-	<img src="../texture/dirt-bottom.jpg">
+	<img src="./texture/dirt-side.jpg">
+	<img src="./texture/dirt-top.jpg">
+	<img src="./texture/dirt-bottom.jpg">
 
         <script src="./scripts/perlin.js"></script>
 		<script src="./scripts/components/three.module.js"></script>
 		<script src="./scripts/components/PointerLockControls.js"></script>
-		<script src="./scripts/components/settings.js"></script>
+		<script src="./scripts/components/PointerLockControls.js"></script>
+		<script src="./scripts/components/inventory.js"></script>
 		<script src="./scripts/components/generationMap.js"></script>
 		<script src="./scripts/components/controls.js"></script>
         <script>
@@ -43,7 +44,7 @@
                         document.body.addEventListener( "click", (e) => { controls.onClick(e); }, false );
 
                         // Инвентарь
-                        //const inventory = new Inventory(canvas, 5);
+                        const inventory = new Inventory(canvas, 5);
 
                         function update(){
                         	// передвижение/камера
