@@ -23,30 +23,22 @@ class Map {
 		const geometry = new BoxGeometry( settings.blockSquare, settings.blockSquare, settings.blockSquare);
 
 		noise.seed(Math.random());
-	    
-	        var i = "i";
-	        let e = 4 + 8;
-	    
-	        const gg = null;
 		
 		for(let x = 0; x < settings.chunkSize; x++) {
 			for(let z = 0; z < settings.chunkSize; z++) {
+			    for(let y = 0; y < 256; z++) {
 
 				let cube = new Mesh(geometry, materialArray);
 				
 
 				this.xoff = this.inc * x;
 				this.zoff = this.inc * z;
-				let y = Math.round(noise.simplex2(this.xoff, this.zoff) * this.amplitude / 5) * 5;
+				let y = Math.round(noise.simplex3(this.xoff, this.zoff, y) * this.amplitude / 5);
 
-				cube.position.set(x * settings.blockSquare, y, z * settings.blockSquare);
+				cube.position.set(x * settings.blockSquare, y * settings.blockSquare, z * settings.blockSquare);
 				scene.add( cube );
-				
+			    }
 			}
 		}
 	}
-	/*FFFFFFFFFFFFFFFF
-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-FFFFFFFFFFFFFFFFFFFDfaeklwkjdlaknsldlaslkwnlkendlwkflihsalkn.qekhlkH;WLJR;JF;LSDVLDHWKLJDLAHSVDSBRBASKSKNWLJHJFJKJSDLDOJEWNLWJLJLKSJLKDJLKF
-*/
 }
