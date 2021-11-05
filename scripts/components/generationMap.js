@@ -12,7 +12,7 @@ class Map {
 
 		const loader = new TextureLoader();
 		const materialArray = ["dirt-side.jpg", "dirt-side.jpg", "dirt-top.jpg", "dirt-bottom.jpg", "dirt-side.jpg", "dirt-side.jpg"].map(v => {
-			let texture = loader.load(`/texture/${v}`);
+			let texture = loader.load(`../texture/${v}`);
 			texture.magFilter = NearestFilter;
 			texture.minFilter = NearestFilter;
 			return new MeshBasicMaterial({ map: texture });
