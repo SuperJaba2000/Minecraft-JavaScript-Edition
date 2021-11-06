@@ -10,3 +10,5 @@ class Settings {
 		this.chunkSquare = this.chunkSize * this.chunkSize;
 	}
 }
+
+const settings = new Settings();
