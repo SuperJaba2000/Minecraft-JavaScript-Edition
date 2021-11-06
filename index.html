@@ -38,7 +38,7 @@
 			const settings = new Settings();
 
 
-                        let mapWorld = new Map();
+                        let mapWorld = new Map(Math.random() * Math.random());
                         mapWorld.generate(scene);
 
                         let controls = new Controls( new PointerLockControls(camera, document.body),  scene, mapWorld );
