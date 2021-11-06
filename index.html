@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
-        <!--meta name="viewport", content="width=device-width, initial-scale=1.0" -->
+        <meta name="viewport", content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style/style.css">
         <title>SIMPLEX-CRAFT</title>
     </head>
@@ -14,14 +14,15 @@
 	<img src="./texture/dirt-top.jpg">
 	<img src="./texture/dirt-bottom.jpg">
 
-        <script src="./scripts/perlin.js"></script>
-		<script src="./scripts/components/three.module.js"></script>
-		<script src="./scripts/components/PointerLockControls.js"></script>
-		<script src="./scripts/components/settings.js"></script>
-		<script src="./scripts/components/inventory.js"></script>
-		<script src="./scripts/components/generationMap.js"></script>
-		<script src="./scripts/components/controls.js"></script>
+        <script src="./scripts/Noise.js"></script>
+		<script src="./scripts/Three-Module.js"></script>
+		<script src="./scripts/PointerLockControls.js"></script>
+		<script src="./scripts/Settings.js"></script>
+		<script src="./scripts/Inventory.js"></script>
+		<script src="./scripts/Map.js"></script>
+		<script src="./scripts/Controls.js"></script>
         <script>
+		
                         const canvas = document.getElementById("game");
 		
                         const scene = new Scene();
@@ -32,11 +33,13 @@
                         renderer.setSize(window.innerWidth, window.innerHeight);
 		
                         const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                        camera.position.set(50, 40, 50);
+                        camera.position.set(-20, 40, 50);
+						
+			const settings = new Settings();
 
 
                         let mapWorld = new Map();
-                        mapWorld.generation(scene);
+                        mapWorld.generate(scene);
 
                         let controls = new Controls( new PointerLockControls(camera, document.body),  scene, mapWorld );
 
