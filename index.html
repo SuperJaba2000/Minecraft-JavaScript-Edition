@@ -33,10 +33,15 @@
                         renderer.setSize(window.innerWidth, window.innerHeight);
 		
                         const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                        camera.position.set(-20, 40, 50);
+                        camera.position.set(24 * settings.blockSquare, 10 * settings.blockSquare,24 * settings.blockSquare);
 
                         let mapWorld = new Map(12345);
-                        mapWorld.generate(scene);
+                        mapWorld.generate();
+			mapWorld.rebuild();
+			
+			mapWorld.cashAll();
+			
+			mapWorld.build(scene);
 
                         let controls = new Controls( new PointerLockControls(camera, document.body),  scene, mapWorld );
 
@@ -52,6 +57,8 @@
 
                         function GameLoop() {
                         	update();
+				
+				mapWorld.update(camera, scene);
                         	render();
                         	requestAnimationFrame(GameLoop);
                         }

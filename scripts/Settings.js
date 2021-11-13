@@ -4,6 +4,7 @@ class Settings {
 		this.blockSquare = 5;
 
 
+                this.worldSize     = 320;
                 this.worldHeight = 20;
 
 		this.chunkSize 	 = 16;

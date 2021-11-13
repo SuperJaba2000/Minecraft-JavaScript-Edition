@@ -236,6 +236,17 @@
     return 32 * (n0 + n1 + n2 + n3);
 
   };
+  
+  module.octaveSimplex2 = function(x, y, scale, octaves){
+     var height = 0, octaveSum = 0;
+     
+     for(var octave = 0; octave < octaves.length; octave++){
+	height += octaves[octave] * module.simplex2(x / (scale*octaves[octave]), y / (scale*octaves[octave]));
+	octaveSum += octaves[octave];
+     }
+	
+      return height / octaveSum; 
+  }
 
   // ##### Perlin noise stuff
 

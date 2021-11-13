@@ -27,18 +27,17 @@ class Controls {
 		raycaster.setFromCamera( new Vector2(), this.controls.getObject() );
 		let intersects = raycaster.intersectObjects( this.scene.children );
 		
-		if (intersects.length < 1)
-			return;
+		if (intersects.length < 1) return;
+		
 		this.scene.remove( intersects[0].object );
 	}
 	onLeftClick(e) {
 
 		const raycaster = new Raycaster();
-		const settings = new Settings();
 
 		// Поставить элемент по клику
-		const geometry = new BoxGeometry(settings.blockSquare, settings.blockSquare, settings.blockSquare);
-		const cube = new Mesh(geometry, this.mapWorld.materialArray);
+		
+		const cube = new Block(0, 0, 0, 0xFF0010).object;
 		
 		raycaster.setFromCamera(new Vector2(), this.controls.getObject() );
 		const intersects = raycaster.intersectObjects( this.scene.children );
